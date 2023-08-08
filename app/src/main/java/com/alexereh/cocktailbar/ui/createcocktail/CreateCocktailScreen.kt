@@ -102,7 +102,8 @@ fun CreateCocktailScreen(
                         value = ingredientName.value,
                         onValueChange = {
                             ingredientName.value = it
-                        }
+                        },
+                        mustNotBeEmpty = true
                     )
                     Spacer(modifier = Modifier.height(24.dp))
                     CustomButton(
@@ -165,6 +166,7 @@ fun CreateCocktailScreen(
         )
         CustomTextField(
             label = "Title",
+            mustNotBeEmpty = true,
             value = title,
             singleLine = true,
             onValueChange = component::updateTitle,
@@ -178,7 +180,6 @@ fun CreateCocktailScreen(
             minHeight = 200.dp,
             value = description,
             onValueChange = component::updateDescription,
-            supportingText = "Optional field"
         )
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(6.dp),
@@ -227,8 +228,7 @@ fun CreateCocktailScreen(
             label = "Recipe",
             minHeight = 200.dp,
             value = recipe,
-            onValueChange = component::updateRecipe,
-            supportingText = "Optional field"
+            onValueChange = component::updateRecipe
         )
         CustomButton(
             text = "Save",

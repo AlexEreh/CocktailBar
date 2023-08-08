@@ -18,9 +18,26 @@ fun CustomTextField(
     label: String,
     value: String,
     singleLine: Boolean = false,
-    supportingText: String? = null,
-    onValueChange: (String) -> Unit
+    //supportingText: String? = null,
+    onValueChange: (String) -> Unit,
+    mustNotBeEmpty: Boolean = false
 ) {
+    val errorColors = OutlinedTextFieldDefaults.colors(
+        focusedBorderColor = Color(0xFFFF0000),
+        unfocusedBorderColor = Color(0xFFFF0000),
+        focusedLabelColor = Color(0xFFFF0000),
+        unfocusedLabelColor = Color(0xFFFF0000),
+        focusedSupportingTextColor = Color(0xFFFF0000),
+        unfocusedSupportingTextColor = Color(0xFFFF0000),
+    )
+    val optionalColors = OutlinedTextFieldDefaults.colors(
+        focusedBorderColor = Color(0xFF79747E),
+        focusedLabelColor = Color(0xFF79747E),
+        focusedSupportingTextColor = Color(0xFF79747E),
+        unfocusedBorderColor = Color(0xFF79747E),
+        unfocusedLabelColor = Color(0xFF79747E),
+        unfocusedSupportingTextColor = Color(0xFF79747E),
+    )
     OutlinedTextField(
         modifier = modifier.sizeIn(minHeight = minHeight),
         label = {
@@ -32,16 +49,29 @@ fun CustomTextField(
         singleLine = singleLine,
         value = value,
         supportingText = {
-            supportingText?.let {
-                Text(supportingText)
+            when (mustNotBeEmpty) {
+                true -> {
+                    if (value == "") {
+                        Text(text = "Add title")
+                    }
+                }
+
+                false -> {
+                    Text("Optional field")
+                }
             }
         },
         onValueChange = onValueChange,
-        colors = OutlinedTextFieldDefaults.colors(
-            focusedBorderColor = Color(0xFF79747E),
-            focusedLabelColor = Color(0xFF79747E),
-            focusedSupportingTextColor = Color(0xFF79747E),
-        ),
+        colors =
+            if (value == "") {
+                if (mustNotBeEmpty) {
+                    errorColors
+                } else{
+                    optionalColors
+                }
+            } else {
+                optionalColors
+            },
         shape = RoundedCornerShape(34.dp)
     )
 }
