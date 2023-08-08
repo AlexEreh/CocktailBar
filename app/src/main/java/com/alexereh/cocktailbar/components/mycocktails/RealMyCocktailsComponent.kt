@@ -2,6 +2,7 @@ package com.alexereh.cocktailbar.components.mycocktails
 
 import com.alexereh.cocktailbar.model.Cocktail
 import com.alexereh.cocktailbar.repo.CocktailRepository
+import com.alexereh.cocktailbar.util.CoroutineRetainedInstance
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.instancekeeper.getOrCreate
 import com.arkivanov.essenty.lifecycle.doOnResume

@@ -1,4 +1,4 @@
-package com.alexereh.cocktailbar.components.mycocktails
+package com.alexereh.cocktailbar.util
 
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
 import kotlinx.coroutines.CoroutineScope

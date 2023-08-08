@@ -1,6 +1,6 @@
 package com.alexereh.cocktailbar.components.cocktaildetails
 
-import com.alexereh.cocktailbar.components.mycocktails.CoroutineRetainedInstance
+import com.alexereh.cocktailbar.util.CoroutineRetainedInstance
 import com.alexereh.cocktailbar.model.Cocktail
 import com.alexereh.cocktailbar.repo.CocktailRepository
 import com.arkivanov.decompose.ComponentContext
