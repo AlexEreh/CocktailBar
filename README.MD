@@ -34,6 +34,6 @@
 
 ## Гифки
 
-[!Создание коктейля](https://s11.gifyu.com/images/ScZce.gif)
+![Создание коктейля](https://s11.gifyu.com/images/ScZce.gif)
 
-[!Детали и удаление коктейля](https://s11.gifyu.com/images/ScZgb.gif)
+![Детали и удаление коктейля](https://s11.gifyu.com/images/ScZgb.gif)
