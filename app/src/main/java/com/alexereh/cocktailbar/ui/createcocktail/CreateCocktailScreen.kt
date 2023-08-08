@@ -108,9 +108,11 @@ fun CreateCocktailScreen(
                     Spacer(modifier = Modifier.height(24.dp))
                     CustomButton(
                         onClick = {
-                            component.addIngredient(ingredientName.value)
-                            ingredientName.value = ""
-                            openDialog.value = false
+                            if (ingredientName.value.trim() != "") {
+                                component.addIngredient(ingredientName.value)
+                                ingredientName.value = ""
+                                openDialog.value = false
+                            }
                         },
                         text = "Add",
                         modifier = Modifier.fillMaxWidth()
@@ -232,7 +234,9 @@ fun CreateCocktailScreen(
         )
         CustomButton(
             text = "Save",
-            onClick = component::save,
+            onClick = {
+                if (title.trim() != "") component.save()
+            },
             modifier = Modifier.fillMaxWidth()
         )
 

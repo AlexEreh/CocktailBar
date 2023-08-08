@@ -59,6 +59,8 @@ class RealCreateCocktailComponent(
     override val uri: StateFlow<String?>
         get() = _uri
 
+    private val _imgChanged = MutableStateFlow(false)
+
     override fun updateTitle(newText: String) {
         _title.update { newText }
     }
@@ -78,6 +80,7 @@ class RealCreateCocktailComponent(
     }
 
     override fun addIngredient(value: String) {
+        if (value.trim() == "") return
         _ingredients.update {
             if (!it.contains(value)) it + value else it
         }
@@ -112,8 +115,9 @@ class RealCreateCocktailComponent(
 
     override fun save() {
         val id = cocktailId
+        if (_title.value.trim() == "") return
         runBlocking(Dispatchers.IO) {
-            if (_uri.value != null) {
+            if (_uri.value != null && _imgChanged.value) {
                 //val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(context.contentResolver, Uri.fromFile(File(_uri.value!!)))
                 val bitmap: Bitmap = getCapturedImage(context, Uri.parse(_uri.value!!))
                 val file = getOutputMediaFile()

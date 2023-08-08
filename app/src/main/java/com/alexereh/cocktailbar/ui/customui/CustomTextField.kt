@@ -51,7 +51,7 @@ fun CustomTextField(
         supportingText = {
             when (mustNotBeEmpty) {
                 true -> {
-                    if (value == "") {
+                    if (value.trim() == "") {
                         Text(text = "Add title")
                     }
                 }
